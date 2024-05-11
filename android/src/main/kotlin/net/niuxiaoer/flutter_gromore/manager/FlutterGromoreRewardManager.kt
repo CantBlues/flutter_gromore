@@ -1,7 +1,6 @@
 package net.niuxiaoer.flutter_gromore.manager
 
 import android.app.Activity
-import android.util.Log
 import com.bytedance.sdk.openadsdk.AdSlot
 import com.bytedance.sdk.openadsdk.TTAdNative
 import com.bytedance.sdk.openadsdk.TTAdSdk
@@ -31,6 +30,7 @@ class FlutterGromoreRewardManager(
         val orientation = params["orientation"] as? Int ?: 1
         // 是否使用SurfaceView
         val useSurfaceView = params["useSurfaceView"] as? Boolean ?: true
+        val userId = params["userId"] as? String ?: "0"
 
         require(!adUnitId.isNullOrEmpty())
 
@@ -40,6 +40,7 @@ class FlutterGromoreRewardManager(
             .setCodeId(adUnitId) // 广告位id
             .setAdCount(1) // 请求的广告数
             .setOrientation(orientation)
+            .setUserID(userId)
             .setMediationAdSlot(
                 MediationAdSlot.Builder()
                     .setMuted(muted)
